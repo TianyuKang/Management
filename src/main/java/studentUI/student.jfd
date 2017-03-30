@@ -1,0 +1,126 @@
+JFDML JFormDesigner: "5.2.5.1.342" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.CardLayout ) ) {
+			name: "this"
+			"$locationPolicy": 1
+			"$sizePolicy": 1
+			"resizable": false
+			"defaultCloseOperation": 3
+			"foreground": sfield java.awt.Color darkGray
+			"title": "student management"
+			"background": sfield java.awt.Color darkGray
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Teaching Management System"
+					"font": new java.awt.Font( "Arial Black", 3, 20 )
+					"foreground": new java.awt.Color( 187, 187, 188, 255 )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 380
+					"height": 60
+					"x": 0
+					"y": 0
+				} )
+				add( new FormComponent( "javax.swing.JSeparator" ) {
+					name: "separator1"
+					"background": sfield java.awt.Color lightGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 395
+					"height": 6
+					"x": 0
+					"y": 65
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button2"
+					"text": "logoff"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 75
+					"height": 40
+					"x": 655
+					"y": 15
+				} )
+				add( new FormContainer( "javax.swing.JSplitPane", new FormLayoutManager( class javax.swing.JSplitPane ) ) {
+					name: "splitPane1"
+					"dividerLocation": 80
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+						name: "panel2"
+						add( new FormComponent( "javax.swing.JToggleButton" ) {
+							name: "toggleButton1"
+							"text": "syllabus"
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton1ActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"y": 0
+							"width": 78
+							"height": 35
+						} )
+						add( new FormComponent( "javax.swing.JToggleButton" ) {
+							name: "toggleButton2"
+							"text": "device"
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton2ActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"y": 30
+							"width": 78
+							"height": 35
+						} )
+						add( new FormComponent( "javax.swing.JToggleButton" ) {
+							name: "toggleButton3"
+							"text": "result"
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton2ActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"width": 78
+							"height": 35
+							"x": 0
+							"y": 60
+						} )
+						add( new FormComponent( "javax.swing.JToggleButton" ) {
+							name: "toggleButton4"
+							"text": "statistic"
+							"$buttonGroup": new FormReference( "buttonGroup1" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton2ActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"width": 78
+							"height": 35
+							"x": 0
+							"y": 90
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "left"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "      Please select operation"
+						"font": new java.awt.Font( "Arial Black", 3, 36 )
+						"foreground": new java.awt.Color( 187, 187, 186, 255 )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "right"
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 760
+					"height": 390
+					"x": 0
+					"y": 76
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "card1"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 780, 510 )
+		} )
+		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
+			name: "buttonGroup1"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 526 )
+		} )
+	}
+}

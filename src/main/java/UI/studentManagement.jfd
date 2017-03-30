@@ -1,0 +1,234 @@
+JFDML JFormDesigner: "5.2.5.1.342" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+				} )
+			}, new FormLayoutConstraints( null ) {
+				"title": "query"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"columns": 1
+				"rows": 4
+			} ) {
+				name: "panel1"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 20
+				} ) {
+					name: "panel3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label6"
+						"text": "  ID          :"
+						"verticalAlignment": 1
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField3"
+						"columns": 10
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label7"
+						"text": "   Name       :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField4"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 20
+				} ) {
+					name: "panel5"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label10"
+						"text": "Class        :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField7"
+						"columns": 10
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label11"
+						"text": "   Major       :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField8"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 20
+				} ) {
+					name: "panel4"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label8"
+						"text": "Username  :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField5"
+						"columns": 10
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label9"
+						"text": "Password  :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField6"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 20
+				} ) {
+					name: "panel6"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button2"
+						"text": "submit"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button3"
+						"text": "reset"
+					} )
+				} )
+			}, new FormLayoutConstraints( null ) {
+				"title": "add"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"columns": 1
+				"rows": 4
+			} ) {
+				name: "panel2"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 20
+				} ) {
+					name: "panel8"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label12"
+						"text": "  ID          :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField9"
+						"columns": 10
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label13"
+						"text": "   Name       :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField10"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 20
+				} ) {
+					name: "panel9"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label14"
+						"text": "Class        :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField11"
+						"columns": 10
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label15"
+						"text": "   Major       :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField12"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 20
+				} ) {
+					name: "panel10"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label16"
+						"text": "Username  :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField13"
+						"columns": 10
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label17"
+						"text": "Password  :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField14"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 20
+				} ) {
+					name: "panel11"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button4"
+						"text": "update"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button5"
+						"text": "reset"
+					} )
+				} )
+			}, new FormLayoutConstraints( null ) {
+				"title": "update"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"columns": 1
+				"rows": 2
+			} ) {
+				name: "panel7"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 80
+				} ) {
+					name: "panel12"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label18"
+						"text": "ID       :"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField15"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"hgap": 60
+					"vgap": 20
+				} ) {
+					name: "panel13"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button6"
+						"text": "delete"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button7"
+						"text": "reset"
+					} )
+				} )
+			}, new FormLayoutConstraints( null ) {
+				"title": "delete"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 635, 425 )
+		} )
+	}
+}

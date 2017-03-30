@@ -1,0 +1,126 @@
+JFDML JFormDesigner: "5.2.5.1.342" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"title": "Teaching Management System"
+			"resizable": false
+			"defaultCloseOperation": 3
+			"$locationPolicy": 1
+			"$sizePolicy": 1
+			"background": sfield java.awt.Color darkGray
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "          LOGIN"
+				"font": new java.awt.Font( "Arial", 3, 48 )
+				"border": new javax.swing.border.SoftBevelBorder( 1, null, null, null, null )
+				"foreground": sfield java.awt.Color white
+				"background": sfield java.awt.Color gray
+				"opaque": true
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 45
+				"width": 495
+				"height": 75
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "user name :"
+				"foreground": new java.awt.Color( 187, 187, 188, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 80
+				"y": 150
+				"width": 75
+				"height": 30
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "password :"
+				"foreground": new java.awt.Color( 187, 187, 188, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 80
+				"y": 200
+				"width": 70
+				"height": 20
+			} )
+			add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+				name: "username"
+				"cursor": new java.awt.Cursor( 2 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 165
+				"y": 155
+				"width": 200
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordField1"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 165
+				"y": 195
+				"width": 200
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButton1"
+				"text": "admin"
+				"$buttonGroup": new FormReference( "buttonGroup1" )
+				"selected": true
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 105
+				"y": 240
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButton2"
+				"text": "teacher"
+				"$buttonGroup": new FormReference( "buttonGroup1" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 195
+				"y": 240
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButton3"
+				"text": "student"
+				"$buttonGroup": new FormReference( "buttonGroup1" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 295
+				"y": 240
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "login"
+				"background": new java.awt.Color( 60, 63, 66, 255 )
+				"foreground": new java.awt.Color( 187, 187, 188, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 135
+				"y": 305
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "reset"
+				"background": new java.awt.Color( 60, 63, 66, 255 )
+				"foreground": new java.awt.Color( 187, 187, 188, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 260
+				"y": 305
+			} )
+			add( new FormComponent( "javax.swing.JProgressBar" ) {
+				name: "progressBar1"
+				"visible": false
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 125
+				"y": 275
+				"width": 230
+				"height": 20
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 500, 400 )
+		} )
+		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
+			name: "buttonGroup1"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 416 )
+		} )
+	}
+}
