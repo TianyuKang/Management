@@ -8,7 +8,7 @@ import teacherUI.teacher;
  */
 public class main {
     public static void main(String[] args) {
-        teacher kk = new teacher();
+        student kk = new student();
         kk.setVisible(true);
     }
 }

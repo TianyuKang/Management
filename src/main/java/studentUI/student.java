@@ -28,6 +28,7 @@ public class student extends JFrame {
 
     private void toggleButton2ActionPerformed(ActionEvent e) {
         // TODO add your code here
+        splitPane1.setRightComponent(new devicequery());
     }
 
     private void initComponents() {
@@ -95,7 +96,10 @@ public class student extends JFrame {
 
                     //---- toggleButton2 ----
                     toggleButton2.setText("device");
-                    toggleButton2.addActionListener(e -> toggleButton2ActionPerformed(e));
+                    toggleButton2.addActionListener(e -> {
+			toggleButton2ActionPerformed(e);
+			toggleButton2ActionPerformed(e);
+		});
                     panel2.add(toggleButton2);
                     toggleButton2.setBounds(0, 30, 78, 35);
 
