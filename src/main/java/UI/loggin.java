@@ -173,7 +173,7 @@ public class loggin extends JFrame {
                 new teacher().setVisible(true);
             }
             if( radioButton3.isSelected() ){
-                new student().setVisible(true);
+                new student(username.getText()).setVisible(true);
             }
         }
     }

@@ -7,12 +7,20 @@ package studentUI;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  * @author Brainrain
  */
 public class student extends JFrame {
+    private String studentUserName = null;
     public student() {
+        initComponents();
+    }
+
+    public student(String studentUserName) {
+        this.studentUserName = studentUserName;
         initComponents();
     }
 
@@ -28,7 +36,21 @@ public class student extends JFrame {
 
     private void toggleButton2ActionPerformed(ActionEvent e) {
         // TODO add your code here
+        test kk = new test();
+        kk.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if(kk.getSelectedIndex() == 0){
+                    System.out.println("kk");
+                }
+            }
+        });
         splitPane1.setRightComponent(new devicequery());
+    }
+
+    private void toggleButton3ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        splitPane1.setRightComponent(new studentResult());
     }
 
     private void initComponents() {
@@ -105,7 +127,10 @@ public class student extends JFrame {
 
                     //---- toggleButton3 ----
                     toggleButton3.setText("result");
-                    toggleButton3.addActionListener(e -> toggleButton2ActionPerformed(e));
+                    toggleButton3.addActionListener(e -> {
+			toggleButton2ActionPerformed(e);
+			toggleButton3ActionPerformed(e);
+		});
                     panel2.add(toggleButton3);
                     toggleButton3.setBounds(0, 60, 78, 35);
 
