@@ -31,6 +31,11 @@ public class teacher extends JFrame {
         splitPane1.setRightComponent(new deviceManagement());
     }
 
+    private void toggleButton4ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        splitPane1.setRightComponent(new teacherStatistic());
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();
@@ -104,7 +109,10 @@ public class teacher extends JFrame {
 
                 //---- toggleButton4 ----
                 toggleButton4.setText("statistic");
-                toggleButton4.addActionListener(e -> toggleButton2ActionPerformed(e));
+                toggleButton4.addActionListener(e -> {
+			toggleButton2ActionPerformed(e);
+			toggleButton4ActionPerformed(e);
+		});
                 panel1.add(toggleButton4);
                 toggleButton4.setBounds(0, 90, 78, 35);
 

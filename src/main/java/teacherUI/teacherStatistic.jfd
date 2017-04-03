@@ -1,0 +1,70 @@
+JFDML JFormDesigner: "5.2.5.1.342" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"rows": 2
+			} ) {
+				name: "panel1"
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "table1"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+					"axis": 1
+				} ) {
+					name: "panel7"
+					"alignmentX": 0.0f
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "achievement content   :"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+						name: "panel8"
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "scrollPane2"
+							add( new FormComponent( "javax.swing.JTextArea" ) {
+								name: "textArea1"
+							} )
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "coment  :"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+						name: "panel9"
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "scrollPane3"
+							add( new FormComponent( "javax.swing.JTextArea" ) {
+								name: "textArea2"
+							} )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"vgap": 0
+					} ) {
+						name: "panel2"
+						"alignmentX": 0.0f
+						"preferredSize": new java.awt.Dimension( 61, -25 )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button1"
+							"text": "submit"
+							"preferredSize": new java.awt.Dimension( 80, 20 )
+						} )
+					} )
+				} )
+			}, new FormLayoutConstraints( null ) {
+				"title": "text"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 680, 475 )
+		} )
+	}
+}
