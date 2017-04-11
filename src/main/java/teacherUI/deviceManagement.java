@@ -4,8 +4,12 @@
 
 package teacherUI;
 
+import jdbc.UserDaoImpl;
+
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 
 /**
  * @author Brainrain
@@ -15,12 +19,63 @@ public class deviceManagement extends JTabbedPane {
         initComponents();
     }
 
+
+    //select device
+    private void thisStateChanged(ChangeEvent e) {
+        // TODO add your code here
+        if( this.getSelectedIndex() == 0){
+            rowData = new UserDaoImpl().selectRows("device");
+            columnNames = new UserDaoImpl().selectCloums("device");
+
+            table1 = new JTable(rowData, columnNames);
+            table1.getModel().addTableModelListener(new TableModelListener() {
+                @Override
+                public void tableChanged(TableModelEvent e) {
+                    int SID = table1.getSelectedRow() + 1;
+                    String tableName = "device";
+                    String columnNmae = table1.getColumnName(table1.getSelectedColumn());
+                    String value = table1.getValueAt(SID - 1, table1.getSelectedColumn()).toString();
+                    int i = new UserDaoImpl().updateSyllabus(SID, tableName, columnNmae, value);
+                    if ( i > 0){
+                        JOptionPane.showConfirmDialog(null, "Update successfully!", "Update", JOptionPane.PLAIN_MESSAGE);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Update error", "Update",JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            });
+
+            scrollPane1.setViewportView(table1);
+        }
+    }
+
+    //add
+    private void button2ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        int i = new UserDaoImpl().addDevice("device", textField1.getText().trim(), textField2.getText().trim(), textField3.getText().trim(), textField4.getText().trim(), textField5.getText().trim()," ");
+        if ( i > 0){
+            JOptionPane.showConfirmDialog(null, "Add successfully!", "Add", JOptionPane.PLAIN_MESSAGE);
+        }else if ( i == -1){
+            JOptionPane.showMessageDialog(null, "Fill in the blanks", "Add",JOptionPane.ERROR_MESSAGE);
+        } else{
+            JOptionPane.showMessageDialog(null, "Add error", "Add",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    //delete
+    private void button4ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        int i = new UserDaoImpl().deleteUser("device", textField7.getText().trim());
+        if ( i > 0){
+            JOptionPane.showConfirmDialog(null, "Delete successfully!", "Delete", JOptionPane.PLAIN_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Delete error", "Delete",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel1 = new JPanel();
-        button1 = new JButton();
         scrollPane1 = new JScrollPane();
-        table1 = new JTable();
         panel2 = new JPanel();
         panel4 = new JPanel();
         label1 = new JLabel();
@@ -48,36 +103,12 @@ public class deviceManagement extends JTabbedPane {
         button5 = new JButton();
 
         //======== this ========
+        addChangeListener(e -> thisStateChanged(e));
 
         //======== panel1 ========
         {
-            panel1.setLayout(null);
-
-            //---- button1 ----
-            button1.setText("select");
-            panel1.add(button1);
-            button1.setBounds(new Rectangle(new Point(300, 16), button1.getPreferredSize()));
-
-            //======== scrollPane1 ========
-            {
-                scrollPane1.setViewportView(table1);
-            }
+            panel1.setLayout(new GridLayout());
             panel1.add(scrollPane1);
-            scrollPane1.setBounds(25, 50, 620, 310);
-
-            { // compute preferred size
-                Dimension preferredSize = new Dimension();
-                for(int i = 0; i < panel1.getComponentCount(); i++) {
-                    Rectangle bounds = panel1.getComponent(i).getBounds();
-                    preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                    preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                }
-                Insets insets = panel1.getInsets();
-                preferredSize.width += insets.right;
-                preferredSize.height += insets.bottom;
-                panel1.setMinimumSize(preferredSize);
-                panel1.setPreferredSize(preferredSize);
-            }
         }
         addTab("query", panel1);
 
@@ -149,6 +180,7 @@ public class deviceManagement extends JTabbedPane {
 
                 //---- button2 ----
                 button2.setText("submit");
+                button2.addActionListener(e -> button2ActionPerformed(e));
                 panel7.add(button2);
 
                 //---- button3 ----
@@ -187,6 +219,7 @@ public class deviceManagement extends JTabbedPane {
 
                     //---- button4 ----
                     button4.setText("delete");
+                    button4.addActionListener(e -> button4ActionPerformed(e));
                     panel10.add(button4);
 
                     //---- button5 ----
@@ -203,9 +236,7 @@ public class deviceManagement extends JTabbedPane {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel1;
-    private JButton button1;
     private JScrollPane scrollPane1;
-    private JTable table1;
     private JPanel panel2;
     private JPanel panel4;
     private JLabel label1;
@@ -232,4 +263,7 @@ public class deviceManagement extends JTabbedPane {
     private JButton button4;
     private JButton button5;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    private Object [][] rowData;
+    private String [] columnNames;
+    private JTable table1;
 }

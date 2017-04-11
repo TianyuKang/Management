@@ -1,29 +1,34 @@
 /*
- * Created by JFormDesigner on Fri Mar 31 21:08:38 CST 2017
+ * Created by JFormDesigner on Mon Mar 27 23:17:46 CST 2017
  */
 
-package studentUI;
+package teacherUI;
 
+import javax.swing.event.*;
 import jdbc.UserDaoImpl;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.table.*;
 
 /**
  * @author Brainrain
  */
-public class devicequery extends JTabbedPane {
-    public devicequery() {
+public class querySyllabus extends JTabbedPane {
+    public querySyllabus() {
+        initComponents();
+    }
+
+    public querySyllabus(String teacherUserName) {
+        this.teacherUserName = teacherUserName;
         initComponents();
     }
 
     private void thisStateChanged(ChangeEvent e) {
         // TODO add your code here
-        if(this.getSelectedIndex() == 0){
-            rowData = new UserDaoImpl().selectRows("device");
-            columnNames = new UserDaoImpl().selectCloums("device");
+        if( this.getSelectedIndex() == 0){
+            rowData = new UserDaoImpl().selectRows(teacherUserName);
+            columnNames = new UserDaoImpl().selectCloums(teacherUserName);
 
             table1 = new JTable(rowData, columnNames){
                 public boolean isCellEditable(int row,int column){
@@ -33,6 +38,7 @@ public class devicequery extends JTabbedPane {
             scrollPane1.setViewportView(table1);
         }
     }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -50,4 +56,5 @@ public class devicequery extends JTabbedPane {
     private Object [][] rowData;
     private String [] columnNames;
     private JTable table1;
+    private String teacherUserName;
 }

@@ -5,11 +5,9 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 			name: "this"
+			addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "thisStateChanged", true ) )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
-				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "table1"
-				} )
 			}, new FormLayoutConstraints( null ) {
 				"title": "query"
 			} )
@@ -92,10 +90,12 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button3"
 						"text": "add"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3ActionPerformed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button4"
 						"text": "reset"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4ActionPerformed", true ) )
 					} )
 				} )
 			}, new FormLayoutConstraints( null ) {
@@ -180,10 +180,12 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button5"
 						"text": "update"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button5ActionPerformed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button6"
 						"text": "reset"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button6ActionPerformed", true ) )
 					} )
 				} )
 			}, new FormLayoutConstraints( null ) {
@@ -216,10 +218,12 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button1"
 						"text": "delete"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button2"
 						"text": "reset"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 					} )
 				} )
 			}, new FormLayoutConstraints( null ) {

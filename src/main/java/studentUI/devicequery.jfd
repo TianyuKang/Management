@@ -5,11 +5,9 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 			name: "this"
+			addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "thisStateChanged", true ) )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
-				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "table1"
-				} )
 			}, new FormLayoutConstraints( null ) {
 				"title": "query"
 			} )

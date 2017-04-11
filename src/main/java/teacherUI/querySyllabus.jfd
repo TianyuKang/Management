@@ -8,25 +8,12 @@ new FormModel {
 			addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "thisStateChanged", true ) )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
-				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "table1"
-				} )
 			}, new FormLayoutConstraints( null ) {
-				"title": "text"
-			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
-				name: "panel2"
-			}, new FormLayoutConstraints( null ) {
-				"title": "kk"
-			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
-				name: "panel3"
-			}, new FormLayoutConstraints( null ) {
-				"title": "text"
+				"title": "query"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 5 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 725, 425 )
 		} )
 	}
 }

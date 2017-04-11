@@ -19,10 +19,6 @@ public class admin extends JFrame {
         initComponents();
     }
 
-    private void tree1TreeExpanded(TreeExpansionEvent e) {
-        // TODO add your code here
-    }
-
     private void toggleButton1ActionPerformed(ActionEvent e) {
         // TODO add your code here
         splitPane1.setRightComponent(new teacherManagement());

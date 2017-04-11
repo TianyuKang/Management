@@ -16,6 +16,11 @@ public class teacher extends JFrame {
         initComponents();
     }
 
+    public teacher(String teacherUserName) {
+        this.teacherUserName = teacherUserName;
+        initComponents();
+    }
+
     private void button2ActionPerformed(ActionEvent e) {
         // TODO add your code here
         dispose();
@@ -23,7 +28,7 @@ public class teacher extends JFrame {
 
     private void toggleButton1ActionPerformed(ActionEvent e) {
         // TODO add your code here
-        splitPane1.setRightComponent(new teacherSyllabus());
+        splitPane1.setRightComponent(new querySyllabus(teacherUserName));
     }
 
     private void toggleButton2ActionPerformed(ActionEvent e) {
@@ -45,7 +50,6 @@ public class teacher extends JFrame {
         panel1 = new JPanel();
         toggleButton1 = new JToggleButton();
         toggleButton2 = new JToggleButton();
-        toggleButton3 = new JToggleButton();
         toggleButton4 = new JToggleButton();
         label3 = new JLabel();
 
@@ -85,36 +89,21 @@ public class teacher extends JFrame {
 
                 //---- toggleButton1 ----
                 toggleButton1.setText("syllabus");
-                toggleButton1.addActionListener(e -> {
-			toggleButton1ActionPerformed(e);
-			toggleButton1ActionPerformed(e);
-		});
+                toggleButton1.addActionListener(e -> toggleButton1ActionPerformed(e));
                 panel1.add(toggleButton1);
                 toggleButton1.setBounds(0, 0, 78, 35);
 
                 //---- toggleButton2 ----
                 toggleButton2.setText("device");
-                toggleButton2.addActionListener(e -> {
-			toggleButton2ActionPerformed(e);
-			toggleButton2ActionPerformed(e);
-		});
+                toggleButton2.addActionListener(e -> toggleButton2ActionPerformed(e));
                 panel1.add(toggleButton2);
-                toggleButton2.setBounds(0, 30, 78, 35);
-
-                //---- toggleButton3 ----
-                toggleButton3.setText("result");
-                toggleButton3.addActionListener(e -> toggleButton2ActionPerformed(e));
-                panel1.add(toggleButton3);
-                toggleButton3.setBounds(0, 60, 78, 35);
+                toggleButton2.setBounds(0, 31, 78, 35);
 
                 //---- toggleButton4 ----
                 toggleButton4.setText("statistic");
-                toggleButton4.addActionListener(e -> {
-			toggleButton2ActionPerformed(e);
-			toggleButton4ActionPerformed(e);
-		});
+                toggleButton4.addActionListener(e -> toggleButton4ActionPerformed(e));
                 panel1.add(toggleButton4);
-                toggleButton4.setBounds(0, 90, 78, 35);
+                toggleButton4.setBounds(0, 62, 78, 35);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -161,7 +150,6 @@ public class teacher extends JFrame {
         ButtonGroup buttonGroup1 = new ButtonGroup();
         buttonGroup1.add(toggleButton1);
         buttonGroup1.add(toggleButton2);
-        buttonGroup1.add(toggleButton3);
         buttonGroup1.add(toggleButton4);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
@@ -174,8 +162,8 @@ public class teacher extends JFrame {
     private JPanel panel1;
     private JToggleButton toggleButton1;
     private JToggleButton toggleButton2;
-    private JToggleButton toggleButton3;
     private JToggleButton toggleButton4;
     private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    private String teacherUserName;
 }

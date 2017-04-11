@@ -5,25 +5,11 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 			name: "this"
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "thisStateChanged", true ) )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 				name: "panel1"
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button1"
-					"text": "select"
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 300
-					"y": 16
-				} )
 				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 					name: "scrollPane1"
-					add( new FormComponent( "javax.swing.JTable" ) {
-						name: "table1"
-					} )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"width": 620
-					"height": 310
-					"x": 25
-					"y": 50
 				} )
 			}, new FormLayoutConstraints( null ) {
 				"title": "query"
@@ -98,6 +84,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button2"
 						"text": "submit"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button3"
@@ -135,6 +122,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "button4"
 							"text": "delete"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4ActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "button5"

@@ -4,8 +4,12 @@
 
 package UI;
 
+import java.awt.event.*;
+import jdbc.UserDaoImpl;
+
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.*;
 
 /**
  * @author Brainrain
@@ -15,10 +19,89 @@ public class studentManagement extends JTabbedPane {
         initComponents();
     }
 
+    private void thisStateChanged(ChangeEvent e) {
+        // TODO add your code here
+        if( this.getSelectedIndex() == 0){
+            rowData = new UserDaoImpl().selectRows("studentaccount");
+            columnNames = new UserDaoImpl().selectCloums("studentaccount");
+
+            table1 = new JTable(rowData, columnNames){
+                public boolean isCellEditable(int row,int column){
+                    return false;
+                }
+            };
+            scrollPane1.setViewportView(table1);
+        }
+    }
+
+    //Add
+    private void button2ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        int i = new UserDaoImpl().addUser("studentaccount", textField3.getText().trim(), textField4.getText().trim(), textField7.getText().trim(), textField8.getText().trim(), textField5.getText().trim(), textField6.getText().trim());
+        if ( i > 0){
+            JOptionPane.showConfirmDialog(null, "Add successfully!", "Add", JOptionPane.PLAIN_MESSAGE);
+        }else if ( i == -1){
+            JOptionPane.showMessageDialog(null, "Fill in the blanks", "Add",JOptionPane.ERROR_MESSAGE);
+        } else{
+            JOptionPane.showMessageDialog(null, "Add error", "Add",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    //Update
+    private void button4ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        int i = new UserDaoImpl().updateUser(textField9.getText().trim(), "Class", "Major", "studentaccount", textField10.getText().trim(), textField11.getText().trim(), textField12.getText().trim(),textField13.getText().trim(), textField14.getText().trim());
+        if ( i > 0){
+            JOptionPane.showConfirmDialog(null, "Update successfully!", "Update", JOptionPane.PLAIN_MESSAGE);
+        }else if ( i == -1){
+            JOptionPane.showMessageDialog(null, "Fill in the blanks", "Update",JOptionPane.ERROR_MESSAGE);
+        } else{
+            JOptionPane.showMessageDialog(null, "Update error", "Update",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    //delete
+    private void button6ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        int i = new UserDaoImpl().deleteUser("studentaccount", textField15.getText().trim());
+        if ( i > 0){
+            JOptionPane.showConfirmDialog(null, "Delete successfully!", "Delete", JOptionPane.PLAIN_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Delete error", "Delete",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    //add reset
+    private void button3ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        textField8.setText("");
+        textField3.setText("");
+        textField4.setText("");
+        textField5.setText("");
+        textField6.setText("");
+        textField7.setText("");
+    }
+
+    //update reset
+    private void button5ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        textField14.setText("");
+        textField9.setText("");
+        textField10.setText("");
+        textField11.setText("");
+        textField12.setText("");
+        textField13.setText("");
+    }
+
+    //delete reset
+    private void button7ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        textField15.setText("");
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         scrollPane1 = new JScrollPane();
-        table1 = new JTable();
         panel1 = new JPanel();
         panel3 = new JPanel();
         label6 = new JLabel();
@@ -66,11 +149,7 @@ public class studentManagement extends JTabbedPane {
         button7 = new JButton();
 
         //======== this ========
-
-        //======== scrollPane1 ========
-        {
-            scrollPane1.setViewportView(table1);
-        }
+        addChangeListener(e -> thisStateChanged(e));
         addTab("query", scrollPane1);
 
         //======== panel1 ========
@@ -150,10 +229,12 @@ public class studentManagement extends JTabbedPane {
 
                 //---- button2 ----
                 button2.setText("submit");
+                button2.addActionListener(e -> button2ActionPerformed(e));
                 panel6.add(button2);
 
                 //---- button3 ----
                 button3.setText("reset");
+                button3.addActionListener(e -> button3ActionPerformed(e));
                 panel6.add(button3);
             }
             panel1.add(panel6);
@@ -236,10 +317,12 @@ public class studentManagement extends JTabbedPane {
 
                 //---- button4 ----
                 button4.setText("update");
+                button4.addActionListener(e -> button4ActionPerformed(e));
                 panel11.add(button4);
 
                 //---- button5 ----
                 button5.setText("reset");
+                button5.addActionListener(e -> button5ActionPerformed(e));
                 panel11.add(button5);
             }
             panel2.add(panel11);
@@ -270,10 +353,12 @@ public class studentManagement extends JTabbedPane {
 
                 //---- button6 ----
                 button6.setText("delete");
+                button6.addActionListener(e -> button6ActionPerformed(e));
                 panel13.add(button6);
 
                 //---- button7 ----
                 button7.setText("reset");
+                button7.addActionListener(e -> button7ActionPerformed(e));
                 panel13.add(button7);
             }
             panel7.add(panel13);
@@ -284,7 +369,6 @@ public class studentManagement extends JTabbedPane {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JScrollPane scrollPane1;
-    private JTable table1;
     private JPanel panel1;
     private JPanel panel3;
     private JLabel label6;
@@ -331,4 +415,7 @@ public class studentManagement extends JTabbedPane {
     private JButton button6;
     private JButton button7;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    private Object [][] rowData;
+    private String [] columnNames;
+    private JTable table1;
 }

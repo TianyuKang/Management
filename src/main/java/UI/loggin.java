@@ -4,6 +4,7 @@
 
 package UI;
 
+import jdbc.UserDaoImpl;
 import studentUI.student;
 import teacherUI.teacher;
 
@@ -141,9 +142,11 @@ public class loggin extends JFrame {
     }
 
     private class progress extends Thread {
+        String user;
+        String pd;
         JProgressBar progressBar;
         JButton button;
-        int[] progressValues = {6, 27, 51, 81, 100};
+        int[] progressValues = {25, 50, 75, 100};
 
         progress(JProgressBar progressBar, JButton button) {
             this.progressBar = progressBar;
@@ -153,7 +156,7 @@ public class loggin extends JFrame {
         public void run() {
             for (int i = 0; i < progressValues.length; i++) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -162,19 +165,39 @@ public class loggin extends JFrame {
             }
             progressBar.setIndeterminate(false);
             progressBar.setString("Load successfully!");
+
             button.setEnabled(true);
-            progressBar.setVisible(false);
 
             //verfy the user and paaword
             if( radioButton1.isSelected() ){
-                new admin().setVisible(true);
+                user = username.getText().trim();
+                pd = String.valueOf(passwordField1.getPassword()).trim();
+                if( pd.equals(new UserDaoImpl().login(user, "admin")) ){
+                    new admin().setVisible(true);
+                }else {
+                    JOptionPane.showMessageDialog(null, "username or password error", "name error",JOptionPane.ERROR_MESSAGE);
+                }
+
             }
             if( radioButton2.isSelected() ){
-                new teacher().setVisible(true);
+                user = username.getText().trim();
+                pd = String.valueOf(passwordField1.getPassword()).trim();
+                if( pd.equals(new UserDaoImpl().login(user, "teacheraccount")) ){
+                    new teacher(user).setVisible(true);
+                }else {
+                    JOptionPane.showMessageDialog(null, "username or password error", "name error",JOptionPane.ERROR_MESSAGE);
+                }
             }
             if( radioButton3.isSelected() ){
-                new student(username.getText()).setVisible(true);
+                user = username.getText().trim();
+                pd = String.valueOf(passwordField1.getPassword()).trim();
+                if( pd.equals(new UserDaoImpl().login(user, "studentaccount")) ){
+                    new student(user).setVisible(true);
+                }else {
+                    JOptionPane.showMessageDialog(null, "username or password error", "name error",JOptionPane.ERROR_MESSAGE);
+                }
             }
+            progressBar.setVisible(false);
         }
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

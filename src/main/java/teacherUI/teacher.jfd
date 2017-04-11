@@ -49,7 +49,6 @@ new FormModel {
 						"text": "syllabus"
 						"$buttonGroup": new FormReference( "buttonGroup1" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton1ActionPerformed", true ) )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton1ActionPerformed", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"y": 0
 						"width": 78
@@ -60,34 +59,21 @@ new FormModel {
 						"text": "device"
 						"$buttonGroup": new FormReference( "buttonGroup1" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton2ActionPerformed", true ) )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton2ActionPerformed", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"y": 30
+						"y": 31
 						"width": 78
 						"height": 35
-					} )
-					add( new FormComponent( "javax.swing.JToggleButton" ) {
-						name: "toggleButton3"
-						"text": "result"
-						"$buttonGroup": new FormReference( "buttonGroup1" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton2ActionPerformed", true ) )
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 78
-						"height": 35
-						"x": 0
-						"y": 60
 					} )
 					add( new FormComponent( "javax.swing.JToggleButton" ) {
 						name: "toggleButton4"
 						"text": "statistic"
 						"$buttonGroup": new FormReference( "buttonGroup1" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton2ActionPerformed", true ) )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "toggleButton4ActionPerformed", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 78
 						"height": 35
 						"x": 0
-						"y": 90
+						"y": 62
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "left"
