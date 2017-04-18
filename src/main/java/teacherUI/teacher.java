@@ -38,7 +38,7 @@ public class teacher extends JFrame {
 
     private void toggleButton4ActionPerformed(ActionEvent e) {
         // TODO add your code here
-        splitPane1.setRightComponent(new teacherStatistic());
+        splitPane1.setRightComponent(new teacherStatistic(teacherUserName));
     }
 
     private void initComponents() {

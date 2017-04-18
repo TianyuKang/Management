@@ -40,7 +40,7 @@ public class student extends JFrame {
 
     private void toggleButton3ActionPerformed(ActionEvent e) {
         // TODO add your code here
-        splitPane1.setRightComponent(new studentResult());
+        splitPane1.setRightComponent(new studentResult(studentUserName));
     }
 
     private void toggleButton4ActionPerformed(ActionEvent e) {

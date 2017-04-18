@@ -4,8 +4,14 @@
 
 package teacherUI;
 
+import java.awt.event.*;
+import jdbc.UserDaoImpl;
+
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
+import javax.swing.event.*;
 
 /**
  * @author Brainrain
@@ -15,11 +21,56 @@ public class teacherStatistic extends JTabbedPane {
         initComponents();
     }
 
+    public teacherStatistic(String teacherUserName){
+        this.teacherUserName = teacherUserName;
+        initComponents();
+    }
+
+    private void thisStateChanged(ChangeEvent e) {
+        // TODO add your code here
+        if(this.getSelectedIndex() == 0){
+            rowData = new UserDaoImpl().selectRows("studentachievement");
+            columnNames = new UserDaoImpl().selectCloums("studentachievement");
+
+            table1 = new JTable(rowData, columnNames){
+                public boolean isCellEditable(int row,int column){
+                    return false;
+                }
+            };
+            table1.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    // TODO Auto-generated method stub
+                    if (e.getClickCount() == 2) {
+                        textArea1.setText("");
+                        textArea2.setText("");
+                        int row = table1.getSelectedRow();
+//                        int column = table1.getSelectedColumn();
+                        SID =  Integer.parseInt( table1.getValueAt(row, 0).toString() );
+                        String value1 = new UserDaoImpl().selectClob("achievement", SID, "Achievement");
+                        String value2 = new UserDaoImpl().selectClob("achievement", SID, "Coment");
+                        textArea1.append("" + value1);
+                        textArea2.append("" + value2);
+                    }
+                }
+            });
+            scrollPane1.setViewportView(table1);
+        }
+    }
+
+    private void button1ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        int i = new UserDaoImpl().addComent(SID, teacherUserName, textArea2.getText());
+        if ( i > 0 ){
+            JOptionPane.showConfirmDialog(null, "Add successfully!", "Add", JOptionPane.PLAIN_MESSAGE);
+        } else{
+            JOptionPane.showMessageDialog(null, "Add error", "Add",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel1 = new JPanel();
         scrollPane1 = new JScrollPane();
-        table1 = new JTable();
         panel7 = new JPanel();
         label4 = new JLabel();
         panel8 = new JPanel();
@@ -33,15 +84,11 @@ public class teacherStatistic extends JTabbedPane {
         button1 = new JButton();
 
         //======== this ========
+        addChangeListener(e -> thisStateChanged(e));
 
         //======== panel1 ========
         {
             panel1.setLayout(new GridLayout(2, 0));
-
-            //======== scrollPane1 ========
-            {
-                scrollPane1.setViewportView(table1);
-            }
             panel1.add(scrollPane1);
 
             //======== panel7 ========
@@ -59,6 +106,11 @@ public class teacherStatistic extends JTabbedPane {
 
                     //======== scrollPane2 ========
                     {
+                        scrollPane2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+                        //---- textArea1 ----
+                        textArea1.setLineWrap(true);
+                        textArea1.setWrapStyleWord(true);
                         scrollPane2.setViewportView(textArea1);
                     }
                     panel8.add(scrollPane2);
@@ -75,6 +127,11 @@ public class teacherStatistic extends JTabbedPane {
 
                     //======== scrollPane3 ========
                     {
+                        scrollPane3.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+                        //---- textArea2 ----
+                        textArea2.setLineWrap(true);
+                        textArea2.setWrapStyleWord(true);
                         scrollPane3.setViewportView(textArea2);
                     }
                     panel9.add(scrollPane3);
@@ -90,20 +147,20 @@ public class teacherStatistic extends JTabbedPane {
                     //---- button1 ----
                     button1.setText("submit");
                     button1.setPreferredSize(new Dimension(80, 20));
+                    button1.addActionListener(e -> button1ActionPerformed(e));
                     panel2.add(button1);
                 }
                 panel7.add(panel2);
             }
             panel1.add(panel7);
         }
-        addTab("text", panel1);
+        addTab("coment", panel1);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel1;
     private JScrollPane scrollPane1;
-    private JTable table1;
     private JPanel panel7;
     private JLabel label4;
     private JPanel panel8;
@@ -116,4 +173,9 @@ public class teacherStatistic extends JTabbedPane {
     private JPanel panel2;
     private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    private Object [][] rowData;
+    private String [] columnNames;
+    private JTable table1;
+    private String teacherUserName;
+    private  int SID;
 }

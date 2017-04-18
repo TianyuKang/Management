@@ -5,15 +5,13 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 			name: "this"
+			addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "thisStateChanged", true ) )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
 				"rows": 2
 			} ) {
 				name: "panel1"
 				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 					name: "scrollPane1"
-					add( new FormComponent( "javax.swing.JTable" ) {
-						name: "table1"
-					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 					"axis": 1
@@ -27,8 +25,11 @@ new FormModel {
 						name: "panel3"
 						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 							name: "scrollPane2"
+							"horizontalScrollBarPolicy": 31
 							add( new FormComponent( "javax.swing.JTextArea" ) {
 								name: "textArea1"
+								"lineWrap": true
+								"wrapStyleWord": true
 							} )
 						} )
 					} )

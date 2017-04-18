@@ -1,5 +1,6 @@
 import UI.admin;
 import UI.loggin;
+import jdbc.User;
 import jdbc.UserDaoImpl;
 import studentUI.student;
 import studentUI.test;
@@ -12,6 +13,7 @@ public class main {
     public static void main(String[] args) {
         loggin kk = new loggin();
         kk.setVisible(true);
+
 //        int i = new UserDaoImpl().updateSyllabus(3, "b130506", "Teacher", "st");
 //        System.out.println(i);
 //        final Object rowData[][];

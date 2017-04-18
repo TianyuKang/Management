@@ -1,6 +1,16 @@
 package jdbc;
 
+import com.mysql.jdbc.*;
+import com.mysql.jdbc.Clob;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.Reader;
+import java.io.StringReader;
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSetMetaData;
 
 
 /**
@@ -62,6 +72,63 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public int addAchievement(int SID, String studentID, String resultName, String clobContent) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int i =0, j=0;
+        try {
+            conn = jdbcUntil.getConnection();
+            String sql = "insert into studentachievement values ( ?, ?, ?, ?)";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, SID);
+            ps.setString(2, resultName);
+            ps.setString(3, studentID);
+            ps.setDate(4, new java.sql.Date(new java.util.Date().getTime()));
+            i = ps.executeUpdate();
+
+            sql = "insert into achievement (SID, Achievement) values (?, ?)";
+            Reader reader = new StringReader(clobContent);
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, SID);
+//            ps.setClob(2, reader, clobContent.length());
+            ps.setCharacterStream(2, reader, clobContent.length());
+            j = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return  -2;
+        }finally {
+            jdbcUntil.free(rs, ps, conn);
+        }
+        return i + j;
+    }
+
+    @Override
+    public int addComent(int SID, String teacherID, String clobContent) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int i =0;
+        try {
+            conn = jdbcUntil.getConnection();
+            String sql = "update achievement set TeacherID = ?, Coment = ? where SID = ?";
+            Reader reader = new StringReader(clobContent);
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, teacherID);
+            ps.setCharacterStream(2, reader, clobContent.length());
+            ps.setInt(3, SID);
+            i = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            jdbcUntil.free(rs, ps, conn);
+        }
+        return i;
+    }
+
+    @Override
     public int deleteUser(String tableName, String ID) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -120,7 +187,7 @@ public class UserDaoImpl implements UserDao {
         int j = 0;
         try {
             conn = jdbcUntil.getConnection();
-            String sql = "update " + tableName + " set " + columnName + " = ? where SID = ?";
+            String sql = "update " + tableName + " set " + columnName + " = ? where ID = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, value);
             ps.setInt(2, SID);
@@ -235,5 +302,31 @@ public class UserDaoImpl implements UserDao {
         }
 
         return rowData;
+    }
+
+    @Override
+    public String selectClob(String tableName, int ID, String columnName) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String value = "";
+        try {
+            conn = jdbcUntil.getConnection();
+            String sql = "select " + columnName + " from " + tableName + " where SID = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, ID);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                com.mysql.jdbc.Clob clob = (Clob) rs.getClob( columnName );
+                value = value + clob.getSubString(1, (int)clob.length());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "";
+        }finally {
+            jdbcUntil.free(rs, ps, conn);
+        }
+        return value;
     }
 }
