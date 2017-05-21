@@ -30,6 +30,12 @@ public class loggin extends JFrame {
         new progress(progressBar1, button1).start();
     }
 
+    private void button2ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        username.setText("");
+        passwordField1.setText("");
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();
@@ -109,6 +115,7 @@ public class loggin extends JFrame {
         button2.setText("reset");
         button2.setBackground(new Color(60, 63, 66));
         button2.setForeground(new Color(187, 187, 188));
+        button2.addActionListener(e -> button2ActionPerformed(e));
         contentPane.add(button2);
         button2.setBounds(new Rectangle(new Point(260, 305), button2.getPreferredSize()));
 
@@ -177,7 +184,6 @@ public class loggin extends JFrame {
                 }else {
                     JOptionPane.showMessageDialog(null, "username or password error", "name error",JOptionPane.ERROR_MESSAGE);
                 }
-
             }
             if( radioButton2.isSelected() ){
                 user = username.getText().trim();
@@ -198,6 +204,7 @@ public class loggin extends JFrame {
                 }
             }
             progressBar.setVisible(false);
+            passwordField1.setText("");
         }
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
