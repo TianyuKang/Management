@@ -35,7 +35,7 @@ public class deviceManagement extends JTabbedPane {
                     String tableName = "device";
                     String columnNmae = table1.getColumnName(table1.getSelectedColumn());
                     String value = table1.getValueAt(SID - 1, table1.getSelectedColumn()).toString();
-                    int i = new UserDaoImpl().updateSyllabus(SID, tableName, columnNmae, value);
+                    int i = new UserDaoImpl().updateSyllabus(SID + 17022000, tableName, columnNmae, value);
                     if ( i > 0){
                         JOptionPane.showConfirmDialog(null, "Update successfully!", "Update", JOptionPane.PLAIN_MESSAGE);
                     }else{
