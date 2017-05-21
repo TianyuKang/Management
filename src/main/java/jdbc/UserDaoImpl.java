@@ -187,7 +187,7 @@ public class UserDaoImpl implements UserDao {
         int j = 0;
         try {
             conn = jdbcUntil.getConnection();
-            String sql = "update " + tableName + " set " + columnName + " = ? where ID = ?";
+            String sql = "update " + tableName + " set " + columnName + " = ? where SID = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, value);
             ps.setInt(2, SID);
